@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Autism Spectrum Screening | AQ-10</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="logo">
+          <div class="logo-circle">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h1>Autism Spectrum Screening</h1>
+          <p class="subtitle">AQ-10 Questionnaire</p>
+        </div>
+      </header>
+
+      <main class="main-content">
+        {% if error %}
+        <div class="alert alert-error">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span>{{ error }}</span>
+        </div>
+        {% endif %}
+
+        <form method="POST" class="screening-form">
+          <!-- AQ-10 Questions -->
+          <section class="question-section card">
+            <h2><i class="fas fa-list-ol"></i> Behavioral Questions</h2>
+            <p class="section-description">
+              For each question, select "0" if the behavior is present else select "1".
+            </p>
+
+            <div class="questions-grid">
+              <!-- Question 1 -->
+              <div class="question-card">
+                <p class="question-text">
+                  1. Notices small sounds others miss (e.g., clock ticking,
+                  distant noises)
+                </p>
+                <div class="options">
+                  <label class="option">
+                    <input type="radio" name="A1_Score" value="1" required />
+                    <span class="radio-btn"></span>
+                    <span>0</span>
+                  </label>
+                  <label class="option">
+                    <input type="radio" name="A1_Score" value="0" />
+                    <span class="radio-btn"></span>
+                    <span>1</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Question 2 -->
+              <div class="question-card">
+                <p class="question-text">
+                  2. Focuses intensely on details rather than the overall
+                  picture
+                </p>
+                <div class="options">
+                  <label class="option">
+                    <input type="radio" name="A2_Score" value="1" required />
+                    <span class="radio-btn"></span>
+                    <span>0</span>
+                  </label>
+                  <label class="option">
+                    <input type="radio" name="A2_Score" value="0" />
+                    <span class="radio-btn"></span>
+                    <span>1</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Question 3 -->
+              <div class="question-card">
+                <p class="question-text">
+                  3. Finds it difficult to interpret what others are thinking or
+                  feeling
+                </p>
+                <div class="options">
+                  <label class="option">
+                    <input type="radio" name="A3_Score" value="1" required />
+                    <span class="radio-btn"></span>
+                    <span>0</span>
+                  </label>
+                  <label class="option">
+                    <input type="radio" name="A3_Score" value="0" />
+                    <span class="radio-btn"></span>
+                    <span>1</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Question 4 -->
+              <div class="question-card">
+                <p class="question-text">
+                  4. Prefers to do things the same way repeatedly
+                </p>
+                <div class="options">
+                  <label class="option">
+                    <input type="radio" name="A4_Score" value="1" required />
+                    <span class="radio-btn"></span>
+                    <span>0</span>
+                  </label>
+                  <label class="option">
+                    <input type="radio" name="A4_Score" value="0" />
+                    <span class="radio-btn"></span>
+                    <span>1</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Question 5 -->
+              <div class="question-card">
+                <p class="question-text">
+                  5. Takes figures of speech literally (e.g., "It's raining cats
+                  and dogs")
+                </p>
+                <div class="options">
+                  <label class="option">
+                    <input type="radio" name="A5_Score" value="1" required />
+                    <span class="radio-btn"></span>
+                    <span>0</span>
+                  </label>
+                  <label class="option">
+                    <input type="radio" name="A5_Score" value="0" />
+                    <span class="radio-btn"></span>
+                    <span>1</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Question 6 -->
+              <div class="question-card">
+                <p class="question-text">
+                  6. Has unusually intense interests that dominate conversations
+                </p>
+                <div class="options">
+                  <label class="option">
+                    <input type="radio" name="A6_Score" value="1" required />
+                    <span class="radio-btn"></span>
+                    <span>0</span>
+                  </label>
+                  <label class="option">
+                    <input type="radio" name="A6_Score" value="0" />
+                    <span class="radio-btn"></span>
+                    <span>1</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Question 7 -->
+              <div class="question-card">
+                <p class="question-text">
+                  7. Becomes upset if daily routines are disrupted
+                </p>
+                <div class="options">
+                  <label class="option">
+                    <input type="radio" name="A7_Score" value="1" required />
+                    <span class="radio-btn"></span>
+                    <span>0</span>
+                  </label>
+                  <label class="option">
+                    <input type="radio" name="A7_Score" value="0" />
+                    <span class="radio-btn"></span>
+                    <span>1</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Question 8 -->
+              <div class="question-card">
+                <p class="question-text">
+                  8. Finds it hard to read facial expressions or body language
+                </p>
+                <div class="options">
+                  <label class="option">
+                    <input type="radio" name="A8_Score" value="1" required />
+                    <span class="radio-btn"></span>
+                    <span>0</span>
+                  </label>
+                  <label class="option">
+                    <input type="radio" name="A8_Score" value="0" />
+                    <span class="radio-btn"></span>
+                    <span>1</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Question 9 -->
+              <div class="question-card">
+                <p class="question-text">
+                  9. Has unusual speech patterns (e.g., formal, monotone, or
+                  repetitive)
+                </p>
+                <div class="options">
+                  <label class="option">
+                    <input type="radio" name="A9_Score" value="1" required />
+                    <span class="radio-btn"></span>
+                    <span>0</span>
+                  </label>
+                  <label class="option">
+                    <input type="radio" name="A9_Score" value="0" />
+                    <span class="radio-btn"></span>
+                    <span>1</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Question 10 -->
+              <div class="question-card">
+                <p class="question-text">
+                  10. Makes unusual finger/hand movements when excited or
+                  stressed
+                </p>
+                <div class="options">
+                  <label class="option">
+                    <input type="radio" name="A10_Score" value="1" required />
+                    <span class="radio-btn"></span>
+                    <span>0</span>
+                  </label>
+                  <label class="option">
+                    <input type="radio" name="A10_Score" value="0" />
+                    <span class="radio-btn"></span>
+                    <span>1</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Demographic Information -->
+          <section class="demographic-section card">
+            <h2><i class="fas fa-user-circle"></i> Personal Information</h2>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="age"
+                  ><i class="fas fa-birthday-cake"></i> Age</label
+                >
+                <input
+                  type="number"
+                  id="age"
+                  name="age"
+                  min="4"
+                  max="120"
+                  step="0.1"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="gender"
+                  ><i class="fas fa-venus-mars"></i> Gender</label
+                >
+                <select id="gender" name="gender" required>
+                  <option value="" disabled selected>Select</option>
+                  <option value="m">Male</option>
+                  <option value="f">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="ethnicity"
+                  ><i class="fas fa-globe-americas"></i> Ethnicity</label
+                >
+                <select id="ethnicity" name="ethnicity" required>
+                  <option value="" disabled selected>Select</option>
+                  <option value="White-European">White-European</option>
+                  <option value="Middle Eastern">Middle Eastern</option>
+                  <option value="Asian">Asian</option>
+                  <option value="Black">Black</option>
+                  <option value="South Asian">South Asian</option>
+                  <option value="Hispanic">Hispanic</option>
+                  <option value="Pasifika">Pasifika</option>
+                  <option value="Others">Other</option>
+                  <option value="?">Prefer not to say</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="country"
+                  ><i class="fas fa-globe"></i> Country</label
+                >
+                <select id="country" name="country" required>
+                  <option value="Unknown" selected>Prefer not to say</option>
+                  <option value="United States">United States</option>
+                  <option value="India">India</option>
+                  <option value="United Kingdom">UK</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="relation"
+                  ><i class="fas fa-users"></i> Relationship</label
+                >
+                <select id="relation" name="relation" required>
+                  <option value="Self" selected>Self</option>
+                  <option value="Parent">Parent</option>
+                  <option value="Caregiver">Caregiver</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="result"
+                  ><i class="fas fa-chart-line"></i> Previous Score</label
+                >
+                <input
+                  type="number"
+                  id="result"
+                  name="result"
+                  min="0"
+                  max="100"
+                  step="0.1"
+                  value="0"
+                />
+              </div>
+            </div>
+
+            <div class="radio-group">
+              <div class="form-group">
+                <label><i class="fas fa-medkit"></i> Born with Jaundice?</label>
+                <div class="options">
+                  <label class="option">
+                    <input type="radio" name="jaundice" value="yes" />
+                    <span class="radio-btn"></span>
+                    <span>Yes</span>
+                  </label>
+                  <label class="option">
+                    <input type="radio" name="jaundice" value="no" checked />
+                    <span class="radio-btn"></span>
+                    <span>No</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label><i class="fas fa-dna"></i> Family History of ASD?</label>
+                <div class="options">
+                  <label class="option">
+                    <input type="radio" name="austim" value="yes" />
+                    <span class="radio-btn"></span>
+                    <span>Yes</span>
+                  </label>
+                  <label class="option">
+                    <input type="radio" name="austim" value="no" checked />
+                    <span class="radio-btn"></span>
+                    <span>No</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label
+                  ><i class="fas fa-mobile-alt"></i> Used Screening App
+                  Before?</label
+                >
+                <div class="options">
+                  <label class="option">
+                    <input type="radio" name="used_app_before" value="yes" />
+                    <span class="radio-btn"></span>
+                    <span>Yes</span>
+                  </label>
+                  <label class="option">
+                    <input
+                      type="radio"
+                      name="used_app_before"
+                      value="no"
+                      checked
+                    />
+                    <span class="radio-btn"></span>
+                    <span>No</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-search"></i> Get Screening Results
+          </button>
+        </form>
+
+        {% if show_result %}
+        <div class="result-section card">
+          <h2><i class="fas fa-clipboard-check"></i> Screening Result</h2>
+          <div
+            class="result-card {{ 'positive' if 'Likely' in prediction else 'negative' }}"
+          >
+            <div class="result-main">
+              {{ prediction }}
+              <span class="confidence">{{ confidence }}</span>
+            </div>
+            <div class="recommendation">
+              {% if 'Likely' in prediction %}
+              <i class="fas fa-exclamation-triangle"></i>
+              <p>Consult a healthcare professional for further evaluation</p>
+              {% else %}
+              <i class="fas fa-check-circle"></i>
+              <p>No strong indicators detected based on this screening</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </main>
+
+      <footer class="footer">
+        <p>
+          <i class="fas fa-info-circle"></i> Note: This screening tool is not a
+          diagnostic instrument.
+        </p>
+        <p class="copyright">© 2025 Autism Screening Tool</p>
+      </footer>
+    </div>
+  </body>
+</html>
